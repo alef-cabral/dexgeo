@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DexGEO | Licenças</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" />
+  <style>
+    body{margin:0;font:15px/1.6 Montserrat,system-ui,sans-serif;color:#17264A;background:#EDF1F8}
+    main{max-width:760px;margin:0 auto;padding:40px 16px 60px}
+    .card{background:#fff;border-radius:18px;padding:28px;box-shadow:0 24px 48px -28px rgba(10,75,255,.35)}
+    h1{margin:0 0 6px;font-size:26px;font-weight:800} h2{font-size:17px;margin:26px 0 6px}
+    a{color:#0A4BFF;font-weight:600} code{background:#F2F5FB;padding:2px 6px;border-radius:6px;font-size:13px}
+    .back{display:inline-block;margin-bottom:18px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="./">← Voltar ao DexGEO</a>
+    <div class="card">
+      <h1>Licenças e código-fonte</h1>
+      <p>O DexGEO roda inteiramente no seu navegador. O código da aplicação é servido sem minificação nesta mesma página
+        (<code>app.js</code>, <code>worker.js</code>, <code>analyzer.js</code>, <code>pdftext.js</code>, <code>index.html</code>, <code>styles.css</code>).</p>
+      <p id="repo">Repositório do projeto: <a id="repo-link" href="#" target="_blank" rel="noopener">GitHub</a></p>
+
+      <h2>MuPDF (leitura de PDF)</h2>
+      <p>A extração de texto usa a biblioteca <strong>MuPDF</strong> compilada para WebAssembly, © Artifex Software, Inc.,
+        distribuída sob a <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener">GNU Affero General Public License v3</a>
+        (texto completo em <a href="vendor/mupdf-1.28.1/LICENSE">vendor/mupdf-1.28.1/LICENSE</a>).
+        Código-fonte correspondente: <a href="https://github.com/ArtifexSoftware/mupdf.js" target="_blank" rel="noopener">github.com/ArtifexSoftware/mupdf.js</a> (versão 1.28.1).</p>
+      <p>A versão original em Python usava o PyMuPDF, também baseado no MuPDF e na mesma licença.</p>
+
+      <h2>Fonte tipográfica</h2>
+      <p>Montserrat, de Julieta Ulanovsky — SIL Open Font License, servida pelo Google Fonts.</p>
+    </div>
+  </main>
+  <script>
+    // Preencha com o endereço do seu repositório no GitHub (ou deixe vazio para ocultar a linha).
+    const REPO_URL = "";
+    if (REPO_URL) document.getElementById("repo-link").href = REPO_URL;
+    else document.getElementById("repo").hidden = true;
+  </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>DexGEO | Painel de uso</title>
+  <meta name="theme-color" content="#1F6BFF" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="painel.css" />
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5"/><path d="M4 20h16"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  </svg>
+
+  <header class="adm-hero">
+    <div class="container adm-hero__in">
+      <div class="logo-slot adm-logo" data-logo-slot><img src="../assets/logo.png" alt="DexGEO" /></div>
+      <div class="adm-hero__txt">
+        <h1>Painel de uso</h1>
+        <p>Quem está usando o DexGEO, quando, em quais áreas e com quais marcas.</p>
+      </div>
+      <div class="adm-hero__act">
+        <button id="btn-refresh" class="btn btn--white" type="button"><svg class="icon"><use href="#i-refresh"/></svg>Atualizar</button>
+        <small id="updated-at">—</small>
+      </div>
+    </div>
+  </header>
+
+  <main class="container adm-main">
+    <!-- Filtros -->
+    <section class="card adm-filters" aria-label="Filtros">
+      <div class="seg" role="group" aria-label="Período" id="period">
+        <button type="button" data-days="7">7 dias</button>
+        <button type="button" data-days="30" class="is-on">30 dias</button>
+        <button type="button" data-days="90">90 dias</button>
+        <button type="button" data-days="0">Tudo</button>
+      </div>
+      <label class="fl"><span>De</span><input type="date" id="f-from" /></label>
+      <label class="fl"><span>Até</span><input type="date" id="f-to" /></label>
+      <label class="fl"><span>Área</span><select id="f-area"><option value="">Todas</option></select></label>
+      <label class="fl"><span>Pessoa</span><select id="f-person"><option value="">Todas</option></select></label>
+      <label class="fl fl--grow"><span>Arquivo</span><input type="search" id="f-q" placeholder="Buscar por nome do arquivo" /></label>
+    </section>
+
+    <div id="state" class="adm-state" hidden></div>
+
+    <!-- Indicadores -->
+    <section class="kpis" id="kpis" aria-label="Indicadores"></section>
+
+    <!-- Gráficos -->
+    <section class="adm-grid">
+      <article class="card adm-card adm-card--wide">
+        <header><h2>Atividade por dia</h2><p>Análises realizadas por dia no período</p></header>
+        <div class="chart" id="ch-days"></div>
+      </article>
+      <article class="card adm-card">
+        <header><h2>Áreas que mais usam</h2><p>Análises por área</p></header>
+        <div class="chart" id="ch-areas"></div>
+      </article>
+      <article class="card adm-card">
+        <header><h2>Marcas mais exploradas</h2><p>Menções de marca nos documentos analisados</p></header>
+        <div class="chart" id="ch-brands"></div>
+      </article>
+      <article class="card adm-card">
+        <header><h2>Horário de uso</h2><p>Acessos e análises por hora do dia</p></header>
+        <div class="chart" id="ch-hours"></div>
+      </article>
+      <article class="card adm-card">
+        <header><h2>Distribuição das notas</h2><p>Análises por faixa do DexGEO Score</p></header>
+        <div class="chart" id="ch-bands"></div>
+      </article>
+    </section>
+
+    <!-- Pessoas -->
+    <section class="card adm-card adm-table-card">
+      <header class="adm-table-head">
+        <div><h2>Pessoas</h2><p>Quem acessou no período</p></div>
+        <button id="csv-people" class="btn btn--ghost" type="button"><svg class="icon"><use href="#i-download"/></svg>CSV</button>
+      </header>
+      <div class="tbl-wrap"><table class="tbl" id="tbl-people"></table></div>
+    </section>
+
+    <!-- Análises -->
+    <section class="card adm-card adm-table-card">
+      <header class="adm-table-head">
+        <div><h2>Análises</h2><p>Baixe o relatório HTML ou o JSON de cada análise</p></div>
+        <button id="csv-analyses" class="btn btn--ghost" type="button"><svg class="icon"><use href="#i-download"/></svg>CSV</button>
+      </header>
+      <div class="tbl-wrap"><table class="tbl" id="tbl-analyses"></table></div>
+      <div class="pager" id="pager"></div>
+    </section>
+
+    <p class="fineprint">Área restrita. Não compartilhe este endereço. Os dados exibidos são pessoais (nome e área): use-os apenas para acompanhamento interno, conforme a LGPD.</p>
+  </main>
+
+  <div id="tip" class="tip" role="tooltip" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="assertive"></div>
+  <script type="module" src="painel.js"></script>
+</body>
+</html>

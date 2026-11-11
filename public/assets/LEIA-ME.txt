@@ -1,0 +1,4 @@
+Coloque aqui o logotipo da aplicação com o nome: logo.png
+(PNG ou SVG com fundo transparente, proporção horizontal, ~400x120 px).
+Ele aparece centralizado no topo e na tela de identificação.
+Para usar outro nome/formato, altere CONFIG.LOGO_URL em public/app.js.
