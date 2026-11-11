@@ -90,6 +90,7 @@ a { color: var(--blue-700); }
   background: none;
   box-shadow: none;
 }
+.logo-slot img { filter: brightness(0) invert(1); }
 .logo-slot img { width: 100%; height: auto; }
 .logo-slot--lg { width: clamp(220px, 70vw, 300px); padding: 18px 28px; }
 .logo-slot.is-empty {
