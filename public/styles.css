@@ -80,19 +80,17 @@ a { color: var(--blue-700); }
    Espaço do logotipo (centralizado)
    --------------------------------------------------------- */
 .logo-slot {
-  /* O logotipo tem "dex" em branco e "geo" no mesmo azul do fundo:
-     a placa azul-marinho garante contraste para as duas partes. */
-.logo-slot {
+  /* Logotipo sem caixa. Como o "geo" tem o mesmo azul do fundo,
+     o logo é exibido todo em branco sobre o azul (filtro abaixo). */
   display: grid; place-items: center;
-  width: clamp(220px, 42vw, 300px);
+  width: clamp(200px, 38vw, 260px);
   margin: 0 auto;
   padding: 0;
   background: none;
   box-shadow: none;
 }
-.logo-slot img { filter: brightness(0) invert(1); }
-.logo-slot img { width: 100%; height: auto; }
-.logo-slot--lg { width: clamp(220px, 70vw, 300px); padding: 18px 28px; }
+.logo-slot img { width: 100%; height: auto; filter: brightness(0) invert(1); }
+.logo-slot--lg { width: clamp(200px, 64vw, 260px); padding: 0; }
 .logo-slot.is-empty {
   min-height: 72px;
   background: rgba(255, 255, 255, .14);
