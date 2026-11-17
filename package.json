@@ -1,0 +1,15 @@
+{
+  "name": "dexgeo-netlify",
+  "private": true,
+  "type": "module",
+  "description": "DexGEO — diagnóstico editorial para GEO (site estático + Netlify Functions para o painel de uso).",
+  "scripts": {
+    "test": "node tests/parity.mjs",
+    "dev": "node scripts/dev-server.mjs"
+  },
+  "dependencies": {
+    "@mozilla/readability": "0.6.0",
+    "@netlify/blobs": "11.1.5",
+    "linkedom": "0.18.14"
+  }
+}

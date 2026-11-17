@@ -1,0 +1,7 @@
+fastapi>=0.110,<1
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+PyMuPDF>=1.24,<2
+# Mantidos para a versão Streamlit original (app.py)
+streamlit>=1.40,<2
+pandas>=2.1,<3
